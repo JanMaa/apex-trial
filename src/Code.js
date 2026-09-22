@@ -43,18 +43,34 @@ function resolveQueue() {
     var field = rows[i][2];
     var newValue = rows[i][3];
 
-    // stamp the queue row as done
-    q.getRange(i + 2, 6).setValue("Done");
-    q.getRange(i + 2, 7).setValue(new Date());
-
     // find the account and write the new value
     for (var j = 0; j < accData.length; j++) {
+
       if (accData[j][0] === accountId) {
-        if (field === "Name")    accData[j][1] = newValue;
-        if (field === "Website") accData[j][2] = newValue;
-        if (field === "Status")  accData[j][3] = newValue;
-        accounts.getRange(j + 2, 1, 1, 4).setValues([accData[j]]);
-        applied++;
+
+        var isUpdated = false; 
+
+        if (field === "Name") {
+          accData[j][1] = newValue;
+          isUpdated = true;
+        }
+        if (field === "Website") {
+          accData[j][2] = newValue;
+          isUpdated = true;
+        }
+        if (field === "Status") {
+          accData[j][3] = newValue;
+          isUpdated = true;
+        }
+
+        // mark the queue row as Done ONLY if the account was successfully updated
+        if (isUpdated) {
+          accounts.getRange(j + 2, 1, 1, 4).setValues([accData[j]]);
+          q.getRange(i + 2, 6).setValue("Done");
+          q.getRange(i + 2, 7).setValue(new Date());
+          applied++;
+        }
+        
       }
     }
   }
