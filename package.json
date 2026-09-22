@@ -1,0 +1,25 @@
+{
+  "name": "apex_trial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanMaa/apex-trial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JanMaa/apex-trial/issues"
+  },
+  "homepage": "https://github.com/JanMaa/apex-trial#readme",
+  "devDependencies": {
+    "@google/clasp": "^3.4.1",
+    "eslint": "^10.11.0"
+  }
+}
